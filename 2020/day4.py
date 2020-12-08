@@ -1,4 +1,5 @@
 import re
+from _helpers import grouped_reader
 
 def readinput(filename):
     with open(filename, 'r') as f:
@@ -65,17 +66,22 @@ def validate_passports(rows):
     valid = 0
     prog = re.compile('(\w+):(.*)')
     for row in rows:
-        if row == '':
-            if evaluate(elements):
-                valid = valid + 1
-            elements = {}
-        else:
-            parts = row.split(' ')
-            for part in parts:
-                m = prog.match(part)
-                elements[m.group(1)] = m.group(2)
+        elements = {}
+        for x in row:
+            elements.update(x)
+        if evaluate(elements):
+            valid = valid + 1
     return valid
 
-rows = readinput('day4.txt')
+prog = re.compile('(\w+):(.*)')
+def parser(x):
+    parts = x.split(' ')
+    output = {}
+    for part in parts:
+        m = prog.match(part)
+        output[m.group(1)] = m.group(2)
+    return output
+
+rows = grouped_reader('day4.txt', parser)
 #116 for part2
 print(validate_passports(rows))
