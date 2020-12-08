@@ -4,8 +4,7 @@ def readinput(filename):
     binary_trans = str.maketrans("fbrlFBRL", "01100110")
     with open(filename, 'r') as f:
         seat_labels = f.readlines()
-    seat_ids = list(map(lambda x: 
-        int(x.translate(binary_trans), 2), seat_labels))
+    seat_ids = list(map(lambda x: int(x.translate(binary_trans), 2), seat_labels))
     return seat_ids
 
 def find_missing_seat(seat_set, max_value):

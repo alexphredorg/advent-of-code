@@ -64,7 +64,6 @@ def evaluate(elements):
 def validate_passports(rows):
     elements = {}
     valid = 0
-    prog = re.compile('(\w+):(.*)')
     for row in rows:
         elements = {}
         for x in row:
