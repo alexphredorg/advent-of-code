@@ -11,7 +11,9 @@ def is_sumable(elements, value):
 def contig_sum(elements, value):
     for i in range(0, len(elements)):
         for j in range(i+1, len(elements)):
-            if sum(elements[i:j]) == value: return (i, j)
+            s = sum(elements[i:j])
+            if s > value: break
+            if s == value: return (i, j)
     return None
 
 def check_xmas(data, preamble = 25):
