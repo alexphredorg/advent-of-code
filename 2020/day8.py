@@ -14,7 +14,7 @@ def run_program(prog, fix_ip = None, fix_opcode = None):
     visited_ips = set()
     while ip < len(prog):
         (opcode, operand) = prog[ip]
-        if (fix_ip != None and fix_ip == ip): opcode = fix_opcode 
+        if fix_ip == ip: opcode = fix_opcode 
         visited_ips.add(ip)
         #print("%d:%s %d" % (ip, opcode, operand))
         if opcode == "nop":
