@@ -20,7 +20,9 @@ def part2(data):
         count[adapter] = sum(count[i] for i in range(adapter - 3, adapter) if i in count)
     return count[data[-1]]
 
-print("part1-test: %d" % part1(read_input('day10-test.txt')))
-print("part1-real: %d" % part1(read_input('day10.txt')))
-print("part2-test: %d" % part2(read_input('day10-test.txt')))
-print("part2-real: %d" % part2(read_input('day10.txt')))
+d = read_input("day10-test.txt")
+print("part1-test: %d" % part1(d))
+print("part2-test: %d" % part2(d))
+d = read_input("day10.txt")
+print("part1-real: %d" % part1(d))
+print("part2-real: %d" % part2(d))
